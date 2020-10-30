@@ -1,0 +1,180 @@
+// breakpoint 1000px
+@media (max-width: 1000px){
+    .countries{
+        gap: 7%;
+    }
+
+    .country{
+        flex: 0 1 28.5%;
+        margin-bottom: 7%;
+    }
+
+    .country-detail{
+
+        &__image-container{
+            margin-right: 3%;
+            flex: 0 0 45%;
+        }
+    
+        &__content{
+            flex: 0 0 55%;
+            margin-left: 3%;
+            justify-content: flex-start;
+        }
+
+        &__borders{
+    
+            & .borders-title{
+                display: block;
+            }
+        }
+    }
+}
+
+// breakpoint 800px
+@media(max-width: 800px){
+    body{
+        font-size: 14px;
+    }
+
+    .header{
+        &__wrapper{ 
+            h1{
+                font-size: 1.5rem;
+            }
+        } 
+    }
+
+    .select{
+        width: 180px;
+    }
+
+    .countries{
+        gap: 10%;
+        margin: 0 5%;
+    }
+
+    .country{
+        flex: 0 1 45%;
+        margin-bottom: 10%;
+    }    
+
+    .country-detail{
+        flex-direction: column;
+    
+        &__image-container{
+            margin-right: 0%;
+            flex: 0 0 100%;
+        }
+    
+        &__content{
+            flex: 0 0 100%;
+            margin-left: 0%;
+            justify-content: flex-start;
+        }
+    
+        &__title{
+            margin-top: 2rem;
+            font-size: 2rem;
+        }
+    
+        &__ulwrapper{
+            display: flex;
+            margin-top: 1.2rem;
+            flex-direction: column;
+    
+            & > * {
+                flex: 0 0 100%;
+            }
+
+            & > ul:last-child{
+                margin-top: 2rem;
+            }
+        } 
+        
+        &__borders{
+            margin-top: 2rem;
+        }
+    }
+}
+
+//breakpoint 550px
+@media(max-width: 550px){
+    .header{
+        &__wrapper{
+            h1{
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .nav-main{
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;
+
+        &__search{
+            width: 100%;
+            margin-right: 0;
+            max-width: 100%;
+            height: 50px;
+        } 
+    }
+
+    .select{
+        margin-top: 1rem;
+        height: 50px;
+    }
+
+    .countries{
+        gap: 0;
+        margin: 0 10%;
+    }
+
+    .country{
+        flex: 0 1 100%;
+        margin-bottom: 12%;
+    }    
+}
+
+//breakpoint 350px
+@media (max-width: 350px){
+    .header{
+        height: 50px;
+        font-size: 12px;
+        
+        &__wrapper{
+            h1{
+                font-size: 12px;
+            }
+        }
+    }
+
+    .nav-main{
+        font-size: 12px;
+        margin: 30px 0;
+
+        &__search{
+            height: 40px;
+        }
+    }
+
+    .nav-detail{
+        height: 40px;
+        margin: 30px 0;     
+    }
+
+    .select{
+        width: 100%;
+        height: 40px;
+    }
+
+    .country-detail{
+
+        &__title{
+            margin-top: 1.5rem;
+            //font-size: 1.2rem;
+        }
+    }
+
+}

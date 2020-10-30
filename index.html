@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/811f36addd.js" crossorigin="anonymous"></script>
+    <title>REST Country API</title>
+</head>
+<body>
+    <!-- Header section -->
+    <header class="header">
+        <div class="header__wrapper container">
+            <h1 class="header__logo">Where in the World?</h1>
+            <div class="header__theme-switcher" title="Switch to Darkmode mode">
+                <i class="far fa-moon"></i>
+                <span>Dark Mode</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" id="main">
+        
+        <!-- MAIN PAGE TEMPLATE -->
+        <nav class="nav-main">
+            <!-- Search -->
+            <div class="nav-main__search">
+                <input type="text" id="search" value="" placeholder="Search for country..." required>
+                <button class="btn--search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- Find by region -->
+            <div class="select">
+                <input type="checkbox" class="select__checkbox">
+                <div class="select__trigger">
+                    <span>Filter by region</span>
+                    <i class="fas fa-angle-down"></i>
+                </div>
+                <div class="select__dropdown">
+                    <ul>
+                        <li><span>All regions</span></li>
+                        <li><span>Africa</span></li>
+                        <li><span>Americas</span></li>
+                        <li><span>Asia</span></li>
+                        <li><span>Europe</span></li>
+                        <li><span>Oceania</span></li>
+                    </ul>
+                </div>
+            </div> 
+        </nav>
+        
+        <!-- Countries -->
+        <section class="countries">   
+        </section>
+
+        <!-- COUNTRY DETIAL TEMPLATE -->
+        <nav class="nav-detail">
+            <span class="btn btn--back" title="back">
+                <i class="fas fa-long-arrow-alt-left"></i>
+                Back
+            </span>
+        </nav>
+
+        <!-- Country detial -->
+        <section class="country-detail">
+        </section>
+
+    </main>
+
+    <!-- Template: country element -->
+    <template data-tamplate-country-element>
+        <div class="country">
+            <img src="" alt="" class="country__img">
+            <div class="country__content">
+                <h2 class="country__title"></h2>
+                <ul>
+                    <li data-country-population></li>
+                    <li data-country-region></li>
+                    <li data-country-capital></li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- Template: country detail -->
+    <template data-tamplate-country-detail>
+        <div class="country-detail__image-container">
+            <img src="" alt="" class="country-detail__image">
+        </div>
+        <div class="country-detail__content">
+            <h2 class="country-detail__title"></h2>
+            <div class="country-detail__ulwrapper">
+                <ul>
+                    <li data-detail-native-name></li>
+                    <li data-detail-population></li>
+                    <li data-detail-region></li>
+                    <li data-detail-subregion></li>
+                    <li data-detail-capital></li>
+                </ul>
+                <ul>
+                    <li data-detail-domain></li>
+                    <li data-detail-currencies></li>
+                    <li data-detail-languages></li>
+                </ul>
+            </div>
+            <div class="country-detail__borders">
+                <span class="borders-title">Border Countries: </span> 
+            </div>
+        </div>
+    </template>
+
+    <script src="js/main_fetch.js" defer></script>
+</body>
+</html>

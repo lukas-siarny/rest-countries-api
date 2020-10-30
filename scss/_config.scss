@@ -1,0 +1,36 @@
+:root{
+    --font-family: 'Nunito Sans', sans-serif;
+    --clr-elements: hsl(0, 0%, 100%); 
+    --clr-background: hsl(0, 0%, 98%); 
+    --clr-font: hsl(200, 15%, 8%); 
+    --clr-input: hsl(0, 0%, 52%);
+}
+
+body.darkmode{
+    --clr-elements: hsl(209, 23%, 22%); 
+    --clr-background: hsl(207, 26%, 17%); 
+    --clr-font: hsl(0, 0%, 100%);
+    --clr-input: hsl(0, 0%, 52%);  
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px var(--clr-elements) inset !important;
+    color: var(--clr-font);
+}
+
+@mixin box-shadow($transparency){
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,$transparency);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,$transparency);
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,$transparency);
+}
+
+

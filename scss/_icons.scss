@@ -1,0 +1,27 @@
+.fa-moon{
+    margin-right: 0.3rem;
+}
+
+/*.fa-search{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1rem;
+}*/
+
+.fa-search{
+    transform-origin: center;
+    transition: transform 250ms ease-in-out;
+}
+
+.fa-angle-down{
+    position: absolute;
+    right: 1rem;
+    transform-origin: center;
+}
+
+.fa-long-arrow-alt-left{
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
