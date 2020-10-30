@@ -59,7 +59,7 @@ function showCountries(countries){
     })
 }
 
-//show country detial
+//show country detail
 function showCountryDetail(countryName){
     const countryDetailSection = document.querySelector(".country-detail");
     
@@ -70,7 +70,7 @@ function showCountryDetail(countryName){
     clearMainArea();
     backToMainPage();
 
-    //Fetch data from API and create new country detial page
+    //Fetch data from API and create new country detail page
     const fields = `name;nativeName;population;region;subregion;capital;currencies;topLevelDomain;languages;borders;flag;alpha3Code;`
     fetchData(`https://restcountries.eu/rest/v2/name/${countryName}?fields=${fields}`)
     .then(country => {
@@ -99,7 +99,7 @@ function createCountryElement(country){
     return countryElement;
 }
 
-//create country detial page
+//create country detail page
 function createCountryDetail(country){
     //create all elemenets
     const templateCountryDetail = document.querySelector("[data-tamplate-country-detail]");
@@ -125,6 +125,9 @@ function createCountryDetail(country){
 
     //Create border countries
     createBorderCountries(country, borders);
+
+    //Change title
+    document.title = `${country.name} || REST Country API`;
     
     return template;
 }   
@@ -234,11 +237,11 @@ function selectByRegionZindex(){
 function searchCountry(countries){
     const search = document.querySelector(".nav-main__search");
     const searchInput = search.querySelector("input");
-    const countryName = searchInput.value;
+    const searchInputValue = searchInput.value;
     const selectedRegion = document.querySelector(".select__trigger span");
     const regionName = document.querySelector(".select__trigger span").innerText;
 
-    if(countryName === ""){
+    if(searchInputValue === ""){
         showCountries(countries);
         
         if(regionName != "All regions" || regionName != "Filter by region"){
@@ -248,7 +251,7 @@ function searchCountry(countries){
     }
 
     const fields = `name;population;region;capital;flag;`
-    fetchData(`https://restcountries.eu/rest/v2/name/${countryName}?fullText=true?fields=${fields}`)
+    fetchData(`https://restcountries.eu/rest/v2/name/${searchInputValue}?fullText=true?fields=${fields}`)
     .then(country => {
         if(country != undefined){
             if(regionName == "All regions" || regionName == "Filter by region"){
@@ -256,22 +259,26 @@ function searchCountry(countries){
             } else if(country[0].region == regionName){
                 showCountries(country);
             } else {
-                countryNotFound("There is no such coutry in this region. Try different region and search again!");
+                countryNotFound(`No results for "<strong>${searchInputValue}</strong> in selected region. Try different region or search for another country..."`);
             }
         } else {
-            countryNotFound("There is no such country. Search again!");
+            countryNotFound(`No results for "<strong>${searchInputValue}</strong>. Search again...`);
         }
     }).catch(err => console.log(err));
+
+    searchInput.value = "";
 }
 
-//show not found
-function countryNotFound(massage){
+//create not found
+function countryNotFound(message){
     const countriesSection = document.querySelector(".countries");
     if(countriesSection.innerHTML != ""){
         countriesSection.innerHTML = "";
     }
     
-    countriesSection.innerHTML = massage;
+    const div = document.createElement("div");
+    div.innerHTML = message;
+    countriesSection.appendChild(div);
 }
 
 //INIT APPLICATION
