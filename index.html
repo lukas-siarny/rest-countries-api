@@ -8,8 +8,9 @@
     <script src="https://kit.fontawesome.com/811f36addd.js" crossorigin="anonymous"></script>
     <title>REST Country API</title>
 </head>
+
 <body>
-    <!-- Header section -->
+    <!-- HEADER section -->
     <header class="header">
         <div class="header__wrapper container">
             <h1 class="header__logo">Where in the World?</h1>
@@ -20,9 +21,9 @@
         </div>
     </header>
 
-    <main class="container" id="main">
-        
-        <!-- MAIN PAGE TEMPLATE -->
+    <!-- NAVIGATION section -->
+    <div class="container">
+        <!-- Main page: navitaion -->
         <nav class="nav-main">
             <!-- Search -->
             <div class="nav-main__search">
@@ -51,25 +52,28 @@
                 </div>
             </div> 
         </nav>
-        
-        <!-- Countries -->
-        <section class="countries">   
-        </section>
 
-        <!-- COUNTRY DETIAL TEMPLATE -->
+        <!-- Country detial: navigation -->
         <nav class="nav-detail">
             <span class="btn btn--back" title="back">
                 <i class="fas fa-long-arrow-alt-left"></i>
                 Back
-            </span>
+            </span> 
         </nav>
+    </div>
+
+    <!-- MAIN AREA section -->
+    <main class="container">
+        <!-- Main page: Countries -->
+        <section class="countries">   
+        </section>
 
         <!-- Country detial -->
         <section class="country-detail">
-        </section>
-
+        </section>    
     </main>
 
+    <!-- TEMPLATES -->
     <!-- Template: country element -->
     <template data-tamplate-country-element>
         <div class="country">

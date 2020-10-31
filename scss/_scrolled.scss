@@ -1,0 +1,39 @@
+.nav--scrolled{
+    .header{
+        height: 30px;
+        box-shadow: none;
+
+        &__wrapper{
+        
+            h1{
+                font-weight: 600;
+                transform: scale(0.5);
+                transform-origin: left center;
+            }
+        }
+    }
+
+    .nav-main{
+        position: fixed;
+        top: 30px;
+        height: 50px;
+        background: var(--clr-elements);
+        @include box-shadow(0.1);
+    
+        &__search{
+            & input{
+                @include box-shadow(0);
+            
+                &:focus{
+                    @include box-shadow(0);
+                }
+            }
+        }        
+    }
+
+    .select{
+        &__trigger{
+            @include box-shadow(0);
+        }
+    }    
+}

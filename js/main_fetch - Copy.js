@@ -1,5 +1,4 @@
-/////////////////////////////////////////////
-///////////////////////// DARK MODE SWTICHTER
+//DARK MODE SWITCHER
 //do premenej dakmode sa zapise hodnota z localStrage len pri nacitani stranky,
 //funkcie setItem ich zmenia v localStorage, avsak mi potrebujeme pri kazdom kliku updatetnut darkMode variable a zobrat aktualny stav z localStorage
 let darkMode = localStorage.getItem("darkMode");
@@ -33,9 +32,7 @@ darkModeSwitcher.addEventListener("click", () => {
     }
 })
 
-
-/////////////////////////////////////////////
-/////////////////////////////////// FUNCTIONS
+//OTHER FUNCTIONS
 //fetchData
 function fetchData(API_URL){
     return fetch(API_URL)
@@ -141,8 +138,10 @@ function createBorderCountries(country, borders){
     const fields = `name;alpha3Code;`
 
     country.borders.forEach(border => {
+        console.log(border);
         fetchData(`https://restcountries.eu/rest/v2/alpha/${border}?fields=${fields}`)
         .then(borderCountry => {
+            console.log(borderCountry);
             const span = document.createElement("span");
             span.className = "btn btn--borders";
             span.innerText = borderCountry.name;
@@ -192,13 +191,11 @@ function formatPopulation(x) {
 //Select by region
 function selectByRegion(countries){
     const selectCheckbox = document.querySelector(".select__checkbox");
-    const selectDropdown = document.querySelector(".select__dropdown");
     const selectTriggerText = document.querySelector(".select__trigger span");
     const regions = document.querySelectorAll(".select__dropdown li"); 
 
     regions.forEach(region => {
         region.addEventListener("click", () => {
-            selectDropdown.style.zIndex = "-1";
             selectTriggerText.innerText = region.innerText;
             selectCheckbox.checked = false;
 
@@ -210,7 +207,11 @@ function selectByRegion(countries){
 
             //Specified region
             fetchData(`https://restcountries.eu/rest/v2/region/${region.innerText}?fields=name;population;region;capital;flag;`)
-            .then(countriesByRegion => {               
+            .then(countriesByRegion => {
+                if(document.querySelector(".countries").innerHTML != ""){
+                    document.querySelector(".countries").innerHTML = ""
+                }
+                
                 showCountries(countriesByRegion);
             })
         })
@@ -234,7 +235,7 @@ function selectByRegionZindex(){
 }
 
 //Search country
-function searchCountry(){
+function searchCountry(countries){
     const search = document.querySelector(".nav-main__search");
     const searchInput = search.querySelector("input");
     const searchInputValue = searchInput.value;
@@ -242,6 +243,11 @@ function searchCountry(){
     const regionName = document.querySelector(".select__trigger span").innerText;
 
     if(searchInputValue === ""){
+        showCountries(countries);
+        
+        if(regionName != "All regions" || regionName != "Filter by region"){
+            selectedRegion.innerText = "All regions";
+        }
         return;
     }
 
@@ -276,18 +282,7 @@ function countryNotFound(message){
     countriesSection.appendChild(div);
 }
 
-//back to roots - h1 title click
-function backToRoots(countries){
-    const selectTriggerText = document.querySelector(".select__trigger span");
-
-    clearCountryPage();
-    showCountries(countries);
-    selectTriggerText.innerText = "Filter by region";
-}
-
-
-/////////////////////////////////////////////
-/////////////////////////// INIT APPLICATION
+//INIT APPLICATION
 const fields = `name;population;region;capital;flag;`
 fetchData(`https://restcountries.eu/rest/v2/all?fields=${fields}`)
 .then(countries => {
@@ -295,7 +290,7 @@ fetchData(`https://restcountries.eu/rest/v2/all?fields=${fields}`)
     showCountries(countries);
     
     //filter countries by region
-    selectByRegion();
+    selectByRegion(countries);
     
     //solve problem with z-index on Select region menu
     selectByRegionZindex();
@@ -304,7 +299,4 @@ fetchData(`https://restcountries.eu/rest/v2/all?fields=${fields}`)
     const searchButton = document.querySelector(".fa-search");
     searchButton.addEventListener("click", () => searchCountry(countries));
 
-    //back to Roots - h1 title click
-    const title = document.querySelector(".header__logo");
-    title.addEventListener("click", (e) => backToRoots(countries)); 
 })
