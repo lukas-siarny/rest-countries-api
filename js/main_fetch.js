@@ -286,7 +286,7 @@ function backToRoots(countries){
 }
 
 
-/////////////////////////////////////////////
+//////////////////////////////////////////////
 /////////////////////////// INIT APPLICATION
 const fields = `name;population;region;capital;flag;`
 fetchData(`https://restcountries.eu/rest/v2/all?fields=${fields}`)
