@@ -15,6 +15,11 @@
     height: 50px;
     align-items: center;
     padding: 0 4rem;
+    transition: box-shadow 250ms ease-in-out;
+
+    &:hover{
+        @include box-shadow(0.25);
+    }
 
     @media (max-width: 350px){
         padding: 0;
@@ -31,7 +36,7 @@
 
 .btn--search{
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
     bottom: 0;
     display: flex;
@@ -43,8 +48,7 @@
     border: none;
     font-size: 1rem;
     color: var(--clr-input);
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
+    border-radius: 5px 0 0 5px;
 }
 
 #search:valid + .btn--search .fa-search{

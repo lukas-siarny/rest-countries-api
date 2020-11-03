@@ -13,7 +13,7 @@
     <!-- HEADER section -->
     <header class="header">
         <div class="header__wrapper container">
-            <h1 class="header__logo">Where in the World?</h1>
+            <h1 class="header__logo" title="Show all countries">Where in the World?</h1>
             <div class="header__theme-switcher" title="Switch to Darkmode mode">
                 <i class="far fa-moon"></i>
                 <span>Dark Mode</span>
@@ -37,7 +37,7 @@
             <div class="select">
                 <input type="checkbox" class="select__checkbox">
                 <div class="select__trigger">
-                    <span>Filter by region</span>
+                    <span>Select by region</span>
                     <i class="fas fa-angle-down"></i>
                 </div>
                 <div class="select__dropdown">
@@ -66,6 +66,8 @@
     <main class="container">
         <!-- Main page: Countries -->
         <section class="countries">   
+            <div class="countries__wrapper">
+            </div>
         </section>
 
         <!-- Country detial -->
@@ -77,7 +79,7 @@
     <!-- Template: country element -->
     <template data-tamplate-country-element>
         <div class="country">
-            <img src="" alt="" class="country__img">
+            <img data-src="" alt="" class="country__img">
             <div class="country__content">
                 <h2 class="country__title"></h2>
                 <ul>
@@ -116,6 +118,6 @@
         </div>
     </template>
 
-    <script src="js/main_fetch.js" defer></script>
+    <script src="js/main.js" type="module" defer></script>
 </body>
 </html>
