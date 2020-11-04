@@ -65,9 +65,11 @@ export function createCountryElement(country, index){
     //Add info from data to template
     countryElement.title = country.name;
     if(index < 20){
+        //first 20 images will load immediately 
         imgFlag.src = country.flag;
         imgFlag.alt = country.name; 
     } else{
+        //every next image will be handle with lazy loading
         imgFlag.setAttribute("data-src", country.flag);
     }
     //template.querySelector(".country__img").alt = country.name;
@@ -143,6 +145,7 @@ export function selectByRegion(countries){
             // All regions
             if(region.innerText == "All regions"){
                 showCountries(countries);
+                searchCountries(countries);
                 DOM.selectedRegion.innerText = CFG.REGION_DEFAULTVALUE;
                 document.title = CFG.PAGE_TITLE;
                 return;
