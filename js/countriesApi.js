@@ -29,16 +29,11 @@ export function showCountries(countries){
 
     countries.forEach((country, index) => {
         // create element for each country
-        const countryElement = createCountryElement(country); 
-
+        const countryElement = createCountryElement(country, index); 
+        
         // set lazy loading of flags img for every country
         const imgFlag = countryElement.querySelector(".country__img");
-
-        if(index < 20){
-            preloadImage(imgFlag, country.name);
-        } else{
-            lazyLoadingImages(imgFlag, country.name);
-        }
+        lazyLoadingImages(imgFlag, country.name);
 
         // append every country elemenet to DOM
         DOM.countriesWrapper.appendChild(countryElement);
@@ -62,13 +57,19 @@ export function showCountryDetail(countryName){
 }
 
 // create country element
-export function createCountryElement(country){
+export function createCountryElement(country, index){
     const template = DOM.templateCountryElement.content.cloneNode(true);
     const countryElement = template.querySelector(".country");
+    const imgFlag = template.querySelector(".country__img");
 
     //Add info from data to template
     countryElement.title = country.name;
-    template.querySelector(".country__img").setAttribute("data-src", country.flag);
+    if(index < 20){
+        imgFlag.src = country.flag;
+        imgFlag.alt = country.name; 
+    } else{
+        imgFlag.setAttribute("data-src", country.flag);
+    }
     //template.querySelector(".country__img").alt = country.name;
     //template.querySelector(".country__img").loading = "lazy";
     template.querySelector(".country__title").innerHTML = country.name;
@@ -265,22 +266,18 @@ export function lazyLoadingImages(image, countryName){
                 return;
             }
 
-            preloadImage(entry.target, countryName);
+            const src = entry.target.getAttribute("data-src");
+            
+            if(!src) {
+                return;
+            }
+
+            entry.target.src = src;
+            entry.target.alt = countryName;
 
             imgObserver.unobserve(entry.target);
         })
     }, imgOptions)
 
     imgObserver.observe(image);
-}
-
-function preloadImage(image, countryName){
-    const src = image.getAttribute("data-src");
-            
-    if(!src) {
-        return;
-    }
-
-    image.src = src;
-    image.alt = countryName;    
 }
