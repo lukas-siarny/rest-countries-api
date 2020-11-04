@@ -1,5 +1,5 @@
 // cfg file
-import * as CFG from "./cfg.js";
+import * as CFG from "./config.js";
 
 // IMPORT DOM elements 
 import * as DOM from "./dom_elements.js";

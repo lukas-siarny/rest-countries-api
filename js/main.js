@@ -1,5 +1,5 @@
 // IMPORT config file
-import * as CFG from "./cfg.js";
+import * as CFG from "./config.js";
 
 // IMPORT DarkMode toggle class
 import DarkmodeToggle from "./Darkmode.js";
