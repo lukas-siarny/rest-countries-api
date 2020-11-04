@@ -64,6 +64,10 @@ input:-webkit-autofill:active {
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
+  -webkit-transition: -webkit-box-shadow 250ms ease-in-out;
+  transition: -webkit-box-shadow 250ms ease-in-out;
+  transition: box-shadow 250ms ease-in-out;
+  transition: box-shadow 250ms ease-in-out, -webkit-box-shadow 250ms ease-in-out;
   -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
@@ -83,10 +87,6 @@ input:-webkit-autofill:active {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 4rem;
-  -webkit-transition: -webkit-box-shadow 250ms ease-in-out;
-  transition: -webkit-box-shadow 250ms ease-in-out;
-  transition: box-shadow 250ms ease-in-out;
-  transition: box-shadow 250ms ease-in-out, -webkit-box-shadow 250ms ease-in-out;
 }
 
 .btn--back:hover {
@@ -108,6 +108,11 @@ input:-webkit-autofill:active {
   display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
   padding: 0.5rem 1rem;
+}
+
+.btn--borders:hover {
+  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .btn--search {

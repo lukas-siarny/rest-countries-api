@@ -27,13 +27,18 @@ export function showCountries(countries){
         DOM.countriesWrapper.innerHTML = "";
     }
 
-    countries.forEach((country) => {
+    countries.forEach((country, index) => {
         // create element for each country
         const countryElement = createCountryElement(country); 
-        
+
         // set lazy loading of flags img for every country
         const imgFlag = countryElement.querySelector(".country__img");
-        lazyLoadingImages(imgFlag, country.name);
+
+        if(index < 20){
+            preloadImage(imgFlag, country.name);
+        } else{
+            lazyLoadingImages(imgFlag, country.name);
+        }
 
         // append every country elemenet to DOM
         DOM.countriesWrapper.appendChild(countryElement);
@@ -260,18 +265,22 @@ export function lazyLoadingImages(image, countryName){
                 return;
             }
 
-            const src = entry.target.getAttribute("data-src");
-            
-            if(!src) {
-                return;
-            }
-
-            entry.target.src = src;
-            entry.target.alt = countryName;
+            preloadImage(entry.target, countryName);
 
             imgObserver.unobserve(entry.target);
         })
     }, imgOptions)
 
     imgObserver.observe(image);
+}
+
+function preloadImage(image, countryName){
+    const src = image.getAttribute("data-src");
+            
+    if(!src) {
+        return;
+    }
+
+    image.src = src;
+    image.alt = countryName;    
 }

@@ -8,7 +8,7 @@ import DarkmodeToggle from "./Darkmode.js";
 import {regionName} from "./dom_elements.js";
 
 // IMPORT FUNCTIONS
-import {fetchData, showCountries, selectByRegion, searchCountries, backToRoots} from "./functions.js";
+import {fetchData, showCountries, selectByRegion, searchCountries, backToRoots} from "./countriesApi.js";
 
 ///////////// INIT APPLICATION
 // set page title

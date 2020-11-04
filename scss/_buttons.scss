@@ -3,6 +3,7 @@
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
+    transition: box-shadow 250ms ease-in-out;
     @include box-shadow(0.1);
     
     @media (max-width: 350px){
@@ -15,7 +16,6 @@
     height: 50px;
     align-items: center;
     padding: 0 4rem;
-    transition: box-shadow 250ms ease-in-out;
 
     &:hover{
         @include box-shadow(0.25);
@@ -32,6 +32,10 @@
     display: inline-block;
     margin: 0.5rem 0.5rem 0 0;
     padding: 0.5rem 1rem;
+
+    &:hover{
+        @include box-shadow(0.25);
+    }
 }
 
 .btn--search{
