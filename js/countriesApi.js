@@ -158,7 +158,7 @@ export function selectByRegion(countries){
             fetchData(`${CFG.API_URL}/region/${region.innerText}?fields=${CFG.FIELDS_ALLCOUNTRIES}`)
             .then(countriesByRegion => {               
                 showCountries(countriesByRegion);
-                searchCountries(countriesByRegion);
+                searchCountries(countriesByRegion, region.innerText);
             })
 
             /*const filteredCountries = countries.filter(country => country.region === region.innerText);
@@ -169,7 +169,7 @@ export function selectByRegion(countries){
 }
 
 // search countries
-export function searchCountries(countries){
+export function searchCountries(countries, regionName){
    let delay;
 
     DOM.searchInput.addEventListener("input", () => {
@@ -180,7 +180,9 @@ export function searchCountries(countries){
             })
 
             if(findCountries == ""){
-                countryNotFound(`No results for "<strong>${DOM.searchInput.value}</strong>"`);
+                countryNotFound(
+                    `No results for "<strong>${DOM.searchInput.value}</strong>" in <strong>${regionName != undefined ? regionName : "Any region"}</strong>`
+                );
                 return;
             }
             
