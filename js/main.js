@@ -5,7 +5,7 @@ import * as CFG from "./config.js";
 import DarkmodeToggle from "./Darkmode.js";
 
 // IMPORT DOM elements 
-import {regionName} from "./dom_elements.js";
+import {regionName} from "./domElements.js";
 
 // IMPORT FUNCTIONS
 import {fetchData, showCountries, selectByRegion, searchCountries, backToRoots} from "./countriesApi.js";
